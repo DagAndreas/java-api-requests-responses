@@ -31,17 +31,17 @@ public class Students {
     }
 
     @GetMapping("{name}")
-    public String getStudent(@PathVariable String name) {
+    public Student getStudent(@PathVariable String name) {
         System.out.println("Checking for " + name);
         for (Student student : students) {
             String studName = student.getFirstName();
             boolean sameName = studName.equals(name);
             if (sameName) {
-                return student.toString();
+                return student;
             }
         }
 
-        return "didnt find";
+        return null;
     }
 
     @PutMapping("{firstName}")
